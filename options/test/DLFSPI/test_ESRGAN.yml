@@ -1,0 +1,79 @@
+name: ESRGAN
+model_type: SRModel
+scale: 1
+num_gpu: 1  # set num_gpu: 0 for cpu mode
+manual_seed: 0
+
+datasets:
+  test_1:  # the 1st test dataset
+    name: Set5
+    type: DLFSPIDataset
+    dataroot_gt: datasets/DLFSI/test_3/set5/label
+    dataroot_lq: datasets/DLFSI/test_3/set5/input
+    io_backend:
+      type: disk
+  test_2:  # the 2nd test dataset
+    name: Set12
+    type: DLFSPIDataset
+    dataroot_gt: datasets/DLFSI/test_3/set12/label
+    dataroot_lq: datasets/DLFSI/test_3/set12/input
+    io_backend:
+      type: disk
+  test_3:
+    name: Set14
+    type: DLFSPIDataset
+    dataroot_gt: datasets/DLFSI/test_3/set14/label
+    dataroot_lq: datasets/DLFSI/test_3/set14/input
+    io_backend:
+      type: disk
+  test_4:
+    name: BSD100
+    type: DLFSPIDataset
+    dataroot_gt: datasets/DLFSI/test_3/BSD100/label
+    dataroot_lq: datasets/DLFSI/test_3/BSD100/input
+    io_backend:
+      type: disk
+  test_5:
+    name: Urban100
+    type: DLFSPIDataset
+    dataroot_gt: datasets/DLFSI/test_3/Urban100/label
+    dataroot_lq: datasets/DLFSI/test_3/Urban100/input
+    io_backend:
+      type: disk
+  test_6:
+    name: Manga109
+    type: DLFSPIDataset
+    dataroot_gt: datasets/DLFSI/test_3/Manga109/label
+    dataroot_lq: datasets/DLFSI/test_3/Manga109/input
+    io_backend:
+      type: disk
+
+
+# network structures
+network_g:
+  type: RRDBNet
+  num_in_ch: 1
+  num_out_ch: 1
+  num_feat: 64
+  num_block: 23
+  scale: 1
+
+# path
+path:
+  pretrain_network_g: experiments/DFSPI2/models/net_g_36000.pth
+  strict_load_g: true
+
+# validation settings
+val:
+  save_img: false
+  suffix: ~  # add suffix to saved images, if None, use exp name
+
+  metrics:
+    psnr: # metric name, can be arbitrary
+      type: calculate_psnr
+      crop_border: 4
+      test_y_channel: false
+    ssim:
+      type: calculate_ssim
+      crop_border: 4
+      test_y_channel: false

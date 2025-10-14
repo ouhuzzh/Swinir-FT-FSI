@@ -251,3 +251,5 @@ class PerceptualLoss(nn.Module):
         features_t = features.transpose(1, 2)
         gram = features.bmm(features_t) / (c * h * w)
         return gram
+
+

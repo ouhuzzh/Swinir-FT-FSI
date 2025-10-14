@@ -57,6 +57,13 @@ class SRModel(BaseModel):
             self.cri_pix = build_loss(train_opt['pixel_opt']).to(self.device)
         else:
             self.cri_pix = None
+        # 新增freq_opt
+        if train_opt.get('freq_opt'):
+            self.cri_freq = build_loss(train_opt['freq_opt']).to(self.device)
+        else:
+            self.cri_freq = None
+
+
 
         if train_opt.get('perceptual_opt'):
             self.cri_perceptual = build_loss(train_opt['perceptual_opt']).to(self.device)
@@ -109,6 +116,11 @@ class SRModel(BaseModel):
             if l_style is not None:
                 l_total += l_style
                 loss_dict['l_style'] = l_style
+        # 新增
+        if self.cri_freq:
+            l_freq = self.cri_freq(self.output, self.gt)
+            l_total += l_freq
+            loss_dict['l_freq'] = l_freq
 
         l_total.backward()
         self.optimizer_g.step()

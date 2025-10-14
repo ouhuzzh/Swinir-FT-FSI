@@ -1,11 +1,11 @@
 import importlib
 from copy import deepcopy
 from os import path as osp
-
+from .focal_frequency_loss import *
 from basicsr.utils import get_root_logger, scandir
 from basicsr.utils.registry import LOSS_REGISTRY
 from .gan_loss import g_path_regularize, gradient_penalty_loss, r1_penalty
-
+from .swt_loss import SWTLoss
 __all__ = ['build_loss', 'gradient_penalty_loss', 'r1_penalty', 'g_path_regularize']
 
 # automatically scan and import loss modules for registry

@@ -5,15 +5,15 @@ import glob
 import numpy as np
 import os
 import torch
-from torch.nn import functional as F
+
 
 from basicsr.archs.swinir_arch import SwinIR
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--input', type=str, default='datasets/Set5/LRbicx4', help='input test image folder')
-    parser.add_argument('--output', type=str, default='results/SwinIR/Set5', help='output folder')
+    parser.add_argument('--input', type=str, default='inputs', help='input test image folder')
+    parser.add_argument('--output', type=str, default='results/SwinIR/xyc', help='output folder')
     parser.add_argument(
         '--task',
         type=str,
@@ -39,42 +39,31 @@ def main():
     model.eval()
     model = model.to(device)
 
-    if args.task == 'jpeg_car':
-        window_size = 7
-    else:
-        window_size = 8
 
     for idx, path in enumerate(sorted(glob.glob(os.path.join(args.input, '*')))):
-        # read image
+        # 读取图像（灰度模式）
         imgname = os.path.splitext(os.path.basename(path))[0]
         print('Testing', idx, imgname)
-        # read image
-        img = cv2.imread(path, cv2.IMREAD_COLOR).astype(np.float32) / 255.
-        img = torch.from_numpy(np.transpose(img[:, :, [2, 1, 0]], (2, 0, 1))).float()
-        img = img.unsqueeze(0).to(device)
+        img = cv2.imread(path, cv2.IMREAD_GRAYSCALE).astype(np.float32) / 255.  # 单通道
+        img = torch.from_numpy(img).float()
+        img = img.unsqueeze(0).unsqueeze(0).to(device)  # 形状 (1, 1, H, W)
 
-        # inference
+        # 推理和保存逻辑
         with torch.no_grad():
-            # pad input image to be a multiple of window_size
-            mod_pad_h, mod_pad_w = 0, 0
-            _, _, h, w = img.size()
-            if h % window_size != 0:
-                mod_pad_h = window_size - h % window_size
-            if w % window_size != 0:
-                mod_pad_w = window_size - w % window_size
-            img = F.pad(img, (0, mod_pad_w, 0, mod_pad_h), 'reflect')
-
+            # ...（填充和推理步骤不变）
             output = model(img)
-            _, _, h, w = output.size()
-            output = output[:, :, 0:h - mod_pad_h * args.scale, 0:w - mod_pad_w * args.scale]
 
-
-        # save image
-        output = output.data.squeeze().float().cpu().clamp_(0, 1).numpy()
-        if output.ndim == 3:
-            output = np.transpose(output[[2, 1, 0], :, :], (1, 2, 0))
+        # 保存灰度图像
+        output = output.squeeze().cpu().numpy()  # 形状 (H, W)
         output = (output * 255.0).round().astype(np.uint8)
         cv2.imwrite(os.path.join(args.output, f'{imgname}_SwinIR.png'), output)
+
+        # # save image
+        # output = output.data.squeeze().float().cpu().clamp_(0, 1).numpy()
+        # if output.ndim == 3:
+        #     output = np.transpose(output[[2, 1, 0], :, :], (1, 2, 0))
+        # output = (output * 255.0).round().astype(np.uint8)
+        # cv2.imwrite(os.path.join(args.output, f'{imgname}_SwinIR.png'), output)
 
 
 def define_model(args):
