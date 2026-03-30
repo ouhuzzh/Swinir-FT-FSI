@@ -1,8 +1,8 @@
 
 
-# SwinIR
+# SwinIR-FT
 
-基于 Swin Transformer 的图像超分辨率重建工具。
+基于 Transformer 的傅里叶单像素重建工具。
 
 ## 项目简介
 
