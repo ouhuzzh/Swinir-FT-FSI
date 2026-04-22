@@ -67,6 +67,20 @@ The following directories are intentionally excluded from version control and sh
 - `result/`
 - `tb_logger/`
 
+### Dataset Download
+
+The dataset is not included in this repository. You can download it from:
+
+- Baidu Pan: https://pan.baidu.com/s/1XLQT74lqsSAExAETpHVXkA?pwd=8i54
+- Extraction code: `8i54`
+
+### Pretrained Weights
+
+Pretrained weights are also distributed separately from the repository:
+
+- Baidu Pan: https://pan.baidu.com/s/1wBuZxrM3kpbdFp_BAsJfFA
+- Extraction code: `fak4`
+
 ## Training
 
 The main training configuration is located at [`options/train/SwinIR/train_SWINIR-FT.yml`](</D:/A/SR/BasicSR - 副本/options/train/SwinIR/train_SWINIR-FT.yml>).
