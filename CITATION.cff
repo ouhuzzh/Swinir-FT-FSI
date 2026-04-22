@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+title: "SwinIR-FT-FSI"
+message: "If you use this software, please cite it using the metadata below."
+type: software
+license: "Apache-2.0"
+abstract: "Research code for Fourier single-pixel image reconstruction based on transfer learning and the Swin Transformer within the BasicSR framework."
+repository-code: "https://github.com/ouhuzzh/Swinir-FT-FSI"
+keywords:
+  - Fourier single-pixel imaging
+  - transfer learning
+  - Swin Transformer
+  - computational imaging
+  - image reconstruction
+authors:
+  - family-names: Liu
+    given-names: Yujin
+    affiliation: "Xidian University"
+  - family-names: Zhang
+    given-names: Zhihao
+    affiliation: "Xidian University"
+  - family-names: Yin
+    given-names: Xinyu
+    affiliation: "Xidian University"
+  - family-names: Liu
+    given-names: Jingjing
+    affiliation: "Xidian University"
+  - family-names: Wang
+    given-names: Hao
+    affiliation: "Xidian University"
+  - family-names: Xing
+    given-names: Jingyang
+    affiliation: "Xidian University"
+  - family-names: Xu
+    given-names: Yunchen
+    affiliation: "Xidian University"
+  - family-names: Ji
+    given-names: Zhong
+    affiliation: "Xidian University"
+  - family-names: Chen
+    given-names: Xueli
+    affiliation: "Xidian University"

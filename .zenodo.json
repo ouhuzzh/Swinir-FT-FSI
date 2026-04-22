@@ -1,0 +1,61 @@
+{
+  "title": "SwinIR-FT-FSI: Transfer learning-driven reconstruction for Fourier single-pixel imaging at ultra-low sampling ratios",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "apache-2.0",
+  "language": "eng",
+  "keywords": [
+    "Fourier single-pixel imaging",
+    "transfer learning",
+    "Swin Transformer",
+    "computational imaging",
+    "image reconstruction"
+  ],
+  "creators": [
+    {
+      "name": "Liu, Yujin",
+      "affiliation": "Xidian University",
+      "type": "ProjectMember"
+    },
+    {
+      "name": "Zhang, Zhihao",
+      "affiliation": "Xidian University",
+      "type": "ProjectMember"
+    },
+    {
+      "name": "Yin, Xinyu",
+      "affiliation": "Xidian University",
+      "type": "ProjectMember"
+    },
+    {
+      "name": "Liu, Jingjing",
+      "affiliation": "Xidian University",
+      "type": "ProjectMember"
+    },
+    {
+      "name": "Wang, Hao",
+      "affiliation": "Xidian University",
+      "type": "ProjectMember"
+    },
+    {
+      "name": "Xing, Jingyang",
+      "affiliation": "Xidian University",
+      "type": "ProjectMember"
+    },
+    {
+      "name": "Xu, Yunchen",
+      "affiliation": "Xidian University",
+      "type": "ProjectMember"
+    },
+    {
+      "name": "Ji, Zhong",
+      "affiliation": "Xidian University",
+      "type": "ProjectMember"
+    },
+    {
+      "name": "Chen, Xueli",
+      "affiliation": "Xidian University",
+      "type": "ProjectMember"
+    }
+  ]
+}
