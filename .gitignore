@@ -1,28 +1,34 @@
-# ignored folders
-datasets/*
-experiments/*
-results/*
-tb_logger/*
-wandb/*
-tmp/*
+# project artifacts
+datasets/
+experiments/
+inputs/
+pretrained_models/
+result/
+results/
+tb_logger/
+wandb/
+tmp/
 
-docs/api
+# local tool/editor folders
+.qoder/
+.vscode/
+.idea/
+.eggs/
+docs/api/
 scripts/__init__.py
 
-*.DS_Store
-.idea
-
-# ignored files
-version.py
-
-# ignored files with suffix
+# generated files
 *.html
-*.png
 *.jpeg
 *.jpg
 *.gif
 *.pth
+*.pt
+*.ckpt
 *.zip
+*.log
+*.tfevents*
+*.DS_Store
 
 # template
 

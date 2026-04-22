@@ -1,0 +1,8 @@
+This repository contains research code built on top of:
+
+- BasicSR: https://github.com/XPixelGroup/BasicSR
+- SwinIR: https://github.com/JingyunLiang/SwinIR
+
+The current repository includes task-specific modifications for Fourier
+single-pixel image reconstruction and keeps the upstream projects
+acknowledged in accordance with their Apache-2.0 licensing.
